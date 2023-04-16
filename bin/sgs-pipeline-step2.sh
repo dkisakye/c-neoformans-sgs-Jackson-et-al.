@@ -65,8 +65,27 @@ gatk VariantFiltration \
 
 done
 
+###--Merge vcfs--### Run the steps below after variant calling
 
+#module load bcftools
 
+#for SAMPLE in $(cat ./sample_list.txt)
+#	do
+#mkdir ../temp
+#cp ${OUTDIR}/vcfs/${SAMPLE}/${SAMPLE}_filtered_snps.vcf* ../temp
+#cd ../temp
+#ls *.vcf.gz > filtered_snps.vcfs.txt 
+#	done
+#bcftools merge -l filtered_snps.vcfs.txt -Oz -o ${OUTDIR}/vcfs/merged.vcf.gz
+#cd ../
+#rm -r ../temp
 
+###--Convert vcf to multi-fasta--###
+#mkdir -p ${OUTDIR}/fasta
 
+#vk phylo fasta ${OUTDIR}/vcfs/merged.vcf.gz > ${OUTDIR}/fasta/merged.fa
 
+###--Perform Multiple sequence alignment using mafft--###
+
+#module load mafft
+#mafft --auto  --maxiterate 2 ${OUTDIR}/fasta/merged.fa > ${OUTDIR}/fasta/mafft_aln.fa 
