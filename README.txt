@@ -1,1 +1,1 @@
-This repo contains scripts used to analyse illumina short read sequences upto variant calling
+This repo contains scripts used to analyse illumina short read sequences upto variant calling. It also contains a .yaml file that can be used to import the packages used to run the analysis in a conda environment on a local computer/server, and then run the different steps. 
